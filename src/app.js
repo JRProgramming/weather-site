@@ -2,8 +2,8 @@ const path = require('path')
 const express = require('express')
 const hbs = require('hbs')
 const request = require('postman-request')
-const geocode = require('../utils/geocode')
-const forecast = require('../utils/forecast')
+const geocode = require('./utils/geocode')
+const forecast = require('./utils/forecast')
 const app = express()
 
 // Define paths for Express config
@@ -78,7 +78,7 @@ app.get('*', (req, res) => {
         errorMessage: 'Page not found.'
     })
 })
-
-app.listen(8080, () => {
-    console.log('Server is up on port 8080.')
+const port = process.env.PORT || 8080;
+app.listen(port, () => {
+    console.log(`Server is up on port ${port}`);
 })
